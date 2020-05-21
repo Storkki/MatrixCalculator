@@ -1,0 +1,23 @@
+{
+  "name": "calcformatrices",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Storkki/MatrixCalculator.git"
+  },
+  "author": "Maik Bohdan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Storkki/MatrixCalculator/issues"
+  },
+  "homepage": "https://github.com/Storkki/MatrixCalculator#readme"
+}
