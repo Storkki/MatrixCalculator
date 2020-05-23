@@ -134,5 +134,37 @@ class Matrix{
 
         return finalMatrix;
     }
+
+    static isSquare(matrix) {
+        return (matrix.length === matrix[0].length);
+    }
+
+    static determinant(matrix) {
+        if (Matrix.isSquare(matrix)) {
+            if (matrix.length === 1) {
+                return matrix[0][0];
+            }else {
+                let determinant = 0;
+                for (let i = 0; i < matrix.length; i++) {
+                    const a0i = matrix[0][i];
+                    const newMatrix = [];
+                    for (let m = 1; m < matrix.length; m++) {
+                        const row = [];
+                        for (let n = 0; n < matrix.length; n++) {
+                            if (n === i) continue;
+                            row.push(matrix[m][n]);
+                        }
+                        newMatrix.push(row);
+                    }
+                    const det = Matrix.determinant(newMatrix);
+                    determinant += a0i * Math.pow(-1, i) * det;
+                    console.log(newMatrix)
+                }
+                return determinant;
+            }
+        }else {
+            return `Matrix must be square(rows = columns)!`
+        }
+    }
 }
 
