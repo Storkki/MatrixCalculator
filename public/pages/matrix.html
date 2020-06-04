@@ -1,15 +1,18 @@
 <!doctype html>
 <html lang="ua">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../styles/globalStyle.css">
-    <link rel="stylesheet" href="../styles/stylesForMatrixPage.css">
-    <title>Матриці</title>
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/forMatrixPage.css">
+    <meta charset="utf-8">
+    <script type="text/javascript" src="../scripts/matrixClass.js" defer></script>
+    <script type="text/javascript" src="../scripts/calculatorInterface.js" defer></script>
+    <title>Matrix Calculator</title>
 </head>
 <body>
-
+    <div>
+        <p id="header">Введіть число від 1 до 15</p>
+        <input id="matrixSize" type="number" min="1" max="15" maxlength="2" oninput="calculatorInterface.onChange()">
+    </div>
+    <div class="inputMatrix"></div>
 </body>
 </html>
