@@ -1,0 +1,12 @@
+body {
+    background: repeating-linear-gradient(90deg, rgba(19,36,16,1) 0%, rgba(33,82,32,1) 50%, rgba(19,36,16,1) 100%);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+p{
+    color: white;
+}

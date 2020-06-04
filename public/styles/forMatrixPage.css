@@ -1,0 +1,28 @@
+.inputMatrix input {
+    width: 30px;
+    height: 15px;
+}
+
+.inputMatrix {
+    display: flex;
+    flex-direction: row;
+}
+
+#firstTable {
+    margin-left: auto;
+}
+
+#secondTable {
+    margin-right: auto;
+}
+
+#firstTable + #secondTable {
+    margin-left: 40px;
+}
+
+#header, #matrixSize{
+    display: block;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+}
