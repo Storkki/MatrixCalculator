@@ -1,15 +1,13 @@
-'use strict'
+'use strict';
 //TODO SUBTRACTION
 //TODO MULTIPLY ON SIMPLE NUMBER
 //TODO ADD IDENTITY MATRIX, CONNECTIVITY MATRIX etc
-//TODO DETERMINANT
-//TODO ZERO MATRIX
-//TODO FUNC FOR FILLING MATRIX;
 
-class Matrix{
+class Matrix {
     constructor(matrix) {
         this.matrix = matrix;
         this.length = length;
+        this.isSqr = Matrix.isSquare(this.matrix);
     }
 
     getMatrix() {
@@ -33,7 +31,7 @@ class Matrix{
     }
 
     getSum(matrix) {
-        return Matrix.sum(this.matrix, matrix)
+        return Matrix.sum(this.matrix, matrix);
     }
 
     getMultiply(matrix) {
@@ -143,7 +141,7 @@ class Matrix{
         if (Matrix.isSquare(matrix)) {
             if (matrix.length === 1) {
                 return matrix[0][0];
-            }else {
+            } else {
                 let determinant = 0;
                 for (let i = 0; i < matrix.length; i++) {
                     const a0i = matrix[0][i];
@@ -158,13 +156,24 @@ class Matrix{
                     }
                     const det = Matrix.determinant(newMatrix);
                     determinant += a0i * Math.pow(-1, i) * det;
-                    console.log(newMatrix)
                 }
                 return determinant;
             }
-        }else {
-            return `Matrix must be square(rows = columns)!`
+        } else {
+            return 'Matrix must be square(rows = columns)!';
         }
     }
+
+    static generateSquareMatrix(size) {
+        const matrix = [];
+        for (let i = 0; i < size; i++) {
+            matrix[i] = [];
+            for (let j = 0; j < size; j++) {
+                matrix[i][j] = 0;
+            }
+        }
+        return matrix;
+    }
+
 }
 
