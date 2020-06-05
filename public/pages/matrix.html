@@ -21,11 +21,15 @@
             <button onclick="calculatorInterface.doOperation('transposition', 'firstMatrix')">Транспонувати</button>
             <button onclick="calculatorInterface.doOperation('toBoolean', 'firstMatrix')">Булева матриця</button>
             <button onclick="calculatorInterface.doOperation('symmetric', 'firstMatrix')">Зробити симетричною</button>
+            <div class="firstMatrixPow">
+                <button class="modalOpen" onclick="calculatorInterface.doOperation('power', 'firstMatrix')">Піднести в степінь</button>
+                <input id="firstMatrixPow" type="number" min="1" maxlength="2">
+            </div>
         </div>
 
         <div class="generalButtons">
-            <button onclick="calculatorInterface.doOperation('sum')">Сума</button>
-            <button onclick="calculatorInterface.doOperation('multiply')">Добуток</button>
+            <button class="modalOpen" onclick="calculatorInterface.doOperation('sum')">Сума</button>
+            <button class="modalOpen" onclick="calculatorInterface.doOperation('multiply')">Добуток</button>
         </div>
 
         <div class="secondMatrixButtons">
@@ -33,7 +37,16 @@
             <button onclick="calculatorInterface.doOperation('transposition', 'secondMatrix')">Транспонувати</button>
             <button onclick="calculatorInterface.doOperation('toBoolean', 'secondMatrix')">Булева матриця</button>
             <button onclick="calculatorInterface.doOperation('symmetric', 'secondMatrix')">Зробити симетричною</button>
+            <div class="secondMatrixPow">
+                <input id="secondMatrixPow" type="number" min="1" maxlength="2">
+                <button class="modalOpen" onclick="calculatorInterface.doOperation('power', 'secondMatrix')">Піднести в степінь</button>
+            </div>
         </div>
     </div>
+
+    <div class="modal">
+    </div>
+
+    <div class="overlay"></div>
 </body>
 </html>
