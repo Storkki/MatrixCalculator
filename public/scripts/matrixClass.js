@@ -67,12 +67,11 @@ class Matrix {
     static transposition(matrix) {
         const newMatrix = [];
         for (let i = 0; i < matrix.length; i++) {
-            newMatrix[i] = [];
+            const row = [];
             for (let j = 0; j < matrix.length; j++) {
-                if (matrix[i][j] === 1) {
-                    newMatrix[j][i] = 1;
-                }
+                row.push(matrix[j][i])
             }
+            newMatrix.push(row);
         }
         return newMatrix;
     }
