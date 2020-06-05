@@ -31,7 +31,7 @@ class Matrix {
     }
 
     isBoolean() {
-        return Matrix.isBoolean(this.matrix)
+        return Matrix.isBoolean(this.matrix);
     }
 
     getSum(matrix) {
@@ -56,7 +56,7 @@ class Matrix {
         return true;
     }
 
-    static isBoolean (matrix) {
+    static isBoolean(matrix) {
         for (let i = 0; i < matrix.length; i++) {
             for (let j = 0; j < matrix.length; j++) {
                 if (matrix[i][j] !== 1 || matrix[i][j] !== 0) {
@@ -68,7 +68,7 @@ class Matrix {
     }
 
     static symmetricMatrix(matrix) {
-        const booleanMatrix = Matrix.transformToBoolean(matrix)
+        const booleanMatrix = Matrix.transformToBoolean(matrix);
         const newMatrix = JSON.parse(JSON.stringify(booleanMatrix));
         for (let i = 0; i < booleanMatrix.length; i++) {
             for (let j = 0; j < booleanMatrix.length; j++) {
@@ -85,7 +85,7 @@ class Matrix {
         for (let i = 0; i < matrix.length; i++) {
             const row = [];
             for (let j = 0; j < matrix.length; j++) {
-                row.push(matrix[j][i])
+                row.push(matrix[j][i]);
             }
             newMatrix.push(row);
         }
