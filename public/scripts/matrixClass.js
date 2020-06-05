@@ -160,6 +160,7 @@ class Matrix {
                 let determinant = 0;
                 for (let i = 0; i < matrix.length; i++) {
                     const a0i = matrix[0][i];
+                    if (!a0i) continue;
                     const newMatrix = [];
                     for (let m = 1; m < matrix.length; m++) {
                         const row = [];
