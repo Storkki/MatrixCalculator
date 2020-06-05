@@ -10,9 +10,30 @@
 </head>
 <body>
     <div>
-        <p id="header">Введіть число від 1 до 15</p>
+        <p id="header">Введіть розмір матриці(від 1 до 15)</p>
         <input id="matrixSize" type="number" min="1" max="15" maxlength="2" oninput="calculatorInterface.onChange()">
     </div>
     <div class="inputMatrix"></div>
+
+    <div class="interactionWithMatrix">
+        <div class="firstMatrixButtons">
+            <button onclick="calculatorInterface.doOperation('det', 'firstMatrix')">Визначник</button>
+            <button onclick="calculatorInterface.doOperation('transposition', 'firstMatrix')">Транспонувати</button>
+            <button onclick="calculatorInterface.doOperation('toBoolean', 'firstMatrix')">Булева матриця</button>
+            <button onclick="calculatorInterface.doOperation('symmetric', 'firstMatrix')">Зробити симетричною</button>
+        </div>
+
+        <div class="generalButtons">
+            <button onclick="calculatorInterface.doOperation('sum')">Сума</button>
+            <button onclick="calculatorInterface.doOperation('multiply')">Добуток</button>
+        </div>
+
+        <div class="secondMatrixButtons">
+            <button onclick="calculatorInterface.doOperation('det', 'secondMatrix')">Визначник</button>
+            <button onclick="calculatorInterface.doOperation('transposition', 'secondMatrix')">Транспонувати</button>
+            <button onclick="calculatorInterface.doOperation('toBoolean', 'secondMatrix')">Булева матриця</button>
+            <button onclick="calculatorInterface.doOperation('symmetric', 'secondMatrix')">Зробити симетричною</button>
+        </div>
+    </div>
 </body>
 </html>
