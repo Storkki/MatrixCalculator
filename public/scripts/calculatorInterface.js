@@ -1,7 +1,12 @@
 'use strict';
 
-const size = document.querySelector('#matrixSize');
+const modalButtons = document.querySelectorAll('.modalOpen');
+const secondPow = document.querySelector('#secondMatrixPow');
+const firstPow = document.querySelector('#firstMatrixPow');
 const inputMatrix = document.querySelector('.inputMatrix');
+const size = document.querySelector('#matrixSize');
+const overlay = document.querySelector('.overlay');
+const modal = document.querySelector('.modal');
 
 class calculatorInterface {
     constructor() {
@@ -67,7 +72,7 @@ class calculatorInterface {
 
         const operations = {
             'det': !matrixNum ? Matrix.determinant(this.firstMatrix) : Matrix.determinant(this.secondMatrix),
-            // 'power': !matrixNum ? Matrix.power(this.firstMatrix) : Matrix.power(this.secondMatrix), //TODO
+            'power': !matrixNum ? Matrix.power(this.firstMatrix, +firstPow.value) : Matrix.power(this.secondMatrix, +secondPow.value),
             'transposition': !matrixNum ? Matrix.transposition(this.firstMatrix) : Matrix.transposition(this.secondMatrix),
             'toBoolean': !matrixNum ? Matrix.transformToBoolean(this.firstMatrix) : Matrix.transformToBoolean(this.secondMatrix),
             'symmetric': !matrixNum ? Matrix.symmetricMatrix(this.firstMatrix) : Matrix.symmetricMatrix(this.secondMatrix),
@@ -77,15 +82,23 @@ class calculatorInterface {
 
         if (operation === 'transposition' ||
             operation === 'toBoolean' ||
-            operation === 'symmetric') {
+            operation === 'symmetric'
+        ) {
             calculatorInterface.setNewMatrix(matrix, operations[operation]);
-        } else if (operation === 'sum' || operation === 'multiply') {
-            let resultMatrix = '';
+        } else if (operation === 'sum' || operation === 'multiply' || operation === 'power') {
+            let tableForResults = '<table id="tableForResults" border="2">';
+
             for (let i = 0; i < size.value; i++) {
-                resultMatrix += operations[operation][i].join(' ') + '\n';
+                tableForResults += '<tr>';
+                for (let j = 0; j < size.value; j++) {
+                    tableForResults += `<td>${operations[operation][i][j]}<\/td>`;
+                }
+                tableForResults +=  '<\/tr>';
             }
-            alert(`Результат: \n${resultMatrix}`);
-        } else {
+
+            tableForResults +=  '<\/table>';
+            modal.innerHTML = tableForResults;
+        } else if (operation === 'det') {
             alert(`Визначник: ${operations[operation]}`);
         }
     }
@@ -108,3 +121,18 @@ class calculatorInterface {
     }
 
 }
+
+modalButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        modal.classList.add('active');
+        overlay.classList.add('active');
+    });
+});
+
+overlay.addEventListener('click', () => {
+    modal.classList.remove('active');
+    overlay.classList.remove('active');
+});
+
+
+
