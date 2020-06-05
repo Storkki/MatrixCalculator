@@ -30,6 +30,10 @@ class Matrix {
         return Matrix.isSymmetric(this.matrix);
     }
 
+    isBoolean() {
+        return Matrix.isBoolean(this.matrix)
+    }
+
     getSum(matrix) {
         return Matrix.sum(this.matrix, matrix);
     }
@@ -52,12 +56,24 @@ class Matrix {
         return true;
     }
 
-    static symmetricMatrix(matrix) {
-        const newMatrix = JSON.parse(JSON.stringify(matrix));
+    static isBoolean (matrix) {
         for (let i = 0; i < matrix.length; i++) {
             for (let j = 0; j < matrix.length; j++) {
-                if (newMatrix[i][j] === 1) {
-                    newMatrix[j][i] = 1;
+                if (matrix[i][j] !== 1 || matrix[i][j] !== 0) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    static symmetricMatrix(matrix) {
+        const booleanMatrix = Matrix.transformToBoolean(matrix)
+        const newMatrix = JSON.parse(JSON.stringify(booleanMatrix));
+        for (let i = 0; i < booleanMatrix.length; i++) {
+            for (let j = 0; j < booleanMatrix.length; j++) {
+                if (newMatrix[i][j]) {
+                    newMatrix[j][i] = newMatrix[i][j];
                 }
             }
         }
