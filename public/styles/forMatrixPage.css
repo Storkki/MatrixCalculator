@@ -17,12 +17,51 @@
 }
 
 #firstTable + #secondTable {
-    margin-left: 40px;
+    margin-left: 15%;
 }
 
-#header, #matrixSize{
+#header, #matrixSize {
     display: block;
     text-align: center;
     margin-right: auto;
     margin-left: auto;
+}
+
+.interactionWithMatrix button {
+    margin-top: 5px;
+    width: 100%;
+    height: 30px;
+    border-radius: 10px;
+}
+
+.interactionWithMatrix button:hover {
+    cursor: pointer;
+}
+
+.interactionWithMatrix {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.firstMatrixButtons, .secondMatrixButtons {
+    width: 200px;
+}
+
+.firstMatrixButtons {
+    margin-left: 30%;
+}
+
+.secondMatrixButtons {
+    margin-right: 30%;
+}
+
+.firstMatrixButtons + .secondMatrixButtons {
+    margin-left: 150px;
+}
+
+.generalButtons{
+    margin-left: auto;
+    margin-right: auto;
 }
