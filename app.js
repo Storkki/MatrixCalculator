@@ -46,28 +46,21 @@ const server = http.createServer((req, res) => {
         pathname = path.join(__dirname, 'public', page);
     }
 
-    const info = {
-        Type: ext,
-        Path: pathname
-    };
-    console.dir(info);
-
     fs.exists(pathname, exist => {
         if (!exist) {
             res.statusCode = 404;
             res.end(`File ${pathname} not found!`);
-            return;
+        } else {
+            fs.readFile(pathname, (err, data) => {
+                if (err) {
+                    res.statusCode = 500;
+                    res.end(`Error getting the file: ${err}.`);
+                } else {
+                    res.setHeader('Content-type', fileType[ext] || 'text/plain');
+                    res.end(data);
+                }
+            });
         }
-
-        fs.readFile(pathname, (err, data) => {
-            if (err) {
-                res.statusCode = 500;
-                res.end(`Error getting the file: ${err}.`);
-            } else {
-                res.setHeader('Content-type', fileType[ext] || 'text/plain');
-                res.end(data);
-            }
-        });
     });
 });
 

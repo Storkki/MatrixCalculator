@@ -15,15 +15,14 @@ class calculatorInterface {
     }
 
     static onChange() {
-        if (size.value < 1 || size.value > 15) {
-            size.value = '';
-        }
+        (size.value < 1 || size.value > 15) ? size.value = '' : 0;
 
         this.firstMatrix = Matrix.generateSquareMatrix(size.value);
         this.secondMatrix = Matrix.generateSquareMatrix(size.value);
 
         let firstTable = '<table id="firstTable">';
         let secondTable = '<table id="secondTable">';
+
         for (let i = 0; i < size.value; i++) {
             firstTable += '<tr>';
             secondTable += '<tr>';
@@ -80,10 +79,7 @@ class calculatorInterface {
             'sum': Matrix.sum(this.firstMatrix, this.secondMatrix),
         };
 
-        if (operation === 'transposition' ||
-            operation === 'toBoolean' ||
-            operation === 'symmetric'
-        ) {
+        if (operation === 'transposition' || operation === 'toBoolean' || operation === 'symmetric') {
             calculatorInterface.setNewMatrix(matrix, operations[operation]);
         } else if (operation === 'sum' || operation === 'multiply' || operation === 'power') {
             let tableForResults = '<table id="tableForResults" border="2">';
@@ -133,6 +129,3 @@ overlay.addEventListener('click', () => {
     modal.classList.remove('active');
     overlay.classList.remove('active');
 });
-
-
-

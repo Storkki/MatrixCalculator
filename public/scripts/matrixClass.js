@@ -59,7 +59,7 @@ class Matrix {
     static isBoolean(matrix) {
         for (let i = 0; i < matrix.length; i++) {
             for (let j = 0; j < matrix.length; j++) {
-                if (matrix[i][j] !== 1 || matrix[i][j] !== 0) {
+                if (matrix[i][j] !== 1 && matrix[i][j] !== 0) {
                     return false;
                 }
             }
@@ -116,11 +116,11 @@ class Matrix {
 
     static multiply(matrix1, matrix2) {
         const multipliedElementOfMatrix = (row, column, matrix1, matrix2) => {
-            let item = 0;
+            let element = 0;
             for (let i = 0; i < matrix1.length; i++) {
-                item += matrix1[row][i] * matrix2[i][column];
+                element += matrix1[row][i] * matrix2[i][column];
             }
-            return item;
+            return element;
         };
 
         const newMatrix = [];
@@ -159,9 +159,10 @@ class Matrix {
             } else {
                 let determinant = 0;
                 for (let i = 0; i < matrix.length; i++) {
-                    const a0i = matrix[0][i];
-                    if (!a0i) continue;
+                    const element = matrix[0][i];
+                    if (!element) continue;
                     const newMatrix = [];
+
                     for (let m = 1; m < matrix.length; m++) {
                         const row = [];
                         for (let n = 0; n < matrix.length; n++) {
@@ -170,13 +171,14 @@ class Matrix {
                         }
                         newMatrix.push(row);
                     }
+
                     const det = Matrix.determinant(newMatrix);
-                    determinant += a0i * Math.pow(-1, i) * det;
+                    determinant += element * Math.pow(-1, i) * det;
                 }
                 return determinant;
             }
         } else {
-            return 'Matrix must be square(rows = columns)!';
+            throw Error('Matrix must be square(rows = columns)!');
         }
     }
 
@@ -192,4 +194,3 @@ class Matrix {
     }
 
 }
-
